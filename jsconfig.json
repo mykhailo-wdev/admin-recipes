@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",  // Вказуємо корінь проєкту
+    "paths": {
+      "@/*": ["src/*"]  // Залишаємо для редактора
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
