@@ -12,6 +12,9 @@
                     <slot name="controls"></slot>
                 </div>
             </header>
+            <div class="inner">
+                <slot name="inner"></slot>
+            </div>
         </main>
     </div>
 </template>
@@ -21,7 +24,7 @@ import AppMenu from '@/components/AppMenu.vue';
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/styles/index.scss' as *;
+@import '@/assets/styles/index.scss';
 
 .menuInner {
     width: 70px;
