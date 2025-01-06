@@ -1,32 +1,20 @@
 <template>
     <AppLayout>
         <template #title>
-            Рецепти
+            Категорії
         </template>
         <template #controls>
-            <AppButton text="Добавити рецепт"/>
+            <AppButton text="Добавити категорію"/>
         </template>
         <template #inner>
-            {{ recipes }}
+            
         </template>
     </AppLayout>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { RecipesService } from '@/services';
 import AppLayout from '@/layouts/AppLayout.vue';
 import AppButton from '@/components/AppButton.vue';
 
-const recipes = ref();
-
-const fetchRecipes = async () => {
-    try {
-        recipes.value = await RecipesService.getRecipesByLetter();
-    } catch {
-
-    }
-}
-
-onMounted(fetchRecipes);
 </script>

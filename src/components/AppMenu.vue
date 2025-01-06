@@ -32,11 +32,11 @@
             </svg>
 
         </div>
-        <el-menu class="nav el-menu-vertical-demo">
-            <el-menu-item index="1">
+        <el-menu :router="true" class="nav el-menu-vertical-demo">
+            <el-menu-item :index="ROUTES_PATH.HOME" :class="['item', isPathActive(ROUTES_PATH.HOME)  && 'active']">
                 <el-icon :size="24"><Food /></el-icon>
             </el-menu-item>
-            <el-menu-item index="2">
+            <el-menu-item :index="ROUTES_PATH.CATEGORIES" :class="['item', isPathActive(ROUTES_PATH.CATEGORIES)  && 'active']">
                 <el-icon :size="24"><Dish /></el-icon>
             </el-menu-item>
         </el-menu>
@@ -45,11 +45,25 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { ROUTES_PATH } from '@/constants';
+
+const router = useRouter();
+
+const route = useRoute();
+
+const isPathActive = (path) => {
+    return route.path === path;
+}
+
+onMounted(isPathActive);
+
 
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/styles/index.scss' as *;
+@import '@/assets/styles/index.scss';
 
 .menu {
     height: 100vh;
@@ -66,5 +80,11 @@
     border-bottom: 1px solid $border;
 }
 
+.item {
+    color: $violet;
+    &.active {
+        color: $pink;
+    }
+}
 
 </style>
