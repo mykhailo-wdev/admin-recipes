@@ -51,5 +51,8 @@ import AppMenu from '@/components/AppMenu.vue';
     font-weight: 700;
 }
 
+.inner {
+    padding-top: 20px;
+}
 
 </style>
