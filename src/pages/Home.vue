@@ -9,6 +9,7 @@
             </router-link>
         </template>
         <template #inner>
+            <AppLoader v-if="isLoading"/>
             <div class="wrapper">
                 <el-table :data="recipes" style="width: 100%">
                     <el-table-column prop="idMeal" label="Id" />
@@ -52,12 +53,18 @@ import { RecipesService } from '@/services';
 import { ROUTES_PATH } from '@/constants';
 import AppLayout from '@/layouts/AppLayout.vue';
 import AppButton from '@/components/AppButton.vue';
+import AppLoader from '@/components/AppLoader.vue';
 
 const recipes = ref();
+const isLoading = ref(false);
 
 const fetchRecipes = async () => {
     try {
+        isLoading.value = true;
         recipes.value = await RecipesService.getRecipesByLetter();
+        setTimeout(() => {
+            isLoading.value = false;
+        }, 1000);
     } catch {
 
     }
